@@ -26,10 +26,6 @@ class BakeryController extends Controller
         $type_id = $request->type_id;
 
         $seeder->run($name, $price, $type_id);
-
-        // call([
-        //     DatabaseSeeder::class
-        // ]);
         
         echo "felvettem";
         print_r($request->all());

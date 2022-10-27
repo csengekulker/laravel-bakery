@@ -15,13 +15,13 @@ class TypeSeeder extends Seeder
     public function run($type_id)
 
     {
+
+
         
         if ( DB::table('types')->where('type', $type_id)->doesntExist()) {
             DB::table('types')->insert([
                 "type" => $type_id
             ]);
-        }
-
-        
+        }   
     }
 }

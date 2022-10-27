@@ -14,10 +14,10 @@ class ProductSeeder extends Seeder
      */
     public function run($name, $price, $type_id)
     {
-        /*TODO: vizsgaljuk hogy letezik e a tipus*/
         DB::table('products')->insert([
             "name" => $name,
             "price" => $price,
+            //itt adja az ekkor felvevendo typeidt
             "type_id" => $type_id 
         ]);
 

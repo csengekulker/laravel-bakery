@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-
 class ProductSeeder extends Seeder
 {
     /**
@@ -13,15 +12,13 @@ class ProductSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run($name, $price, $type_id)
     {
-        // DB::table('products')->insert([
-        //     "name" => $name,
-        //     "price" => $price,
-        //     "type_id" => $type_id 
-        // ]);d
-
-        // $name, $price, $type_id
+        DB::table('products')->insert([
+            "name" => $name,
+            "price" => $price,
+            "type_id" => $type_id 
+        ]);
 
         DB::table('products')->insert([
             "name" => "Teszt Adat",

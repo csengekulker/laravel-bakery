@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\ProductSeeder;
 
 class BakeryController extends Controller
 {
@@ -19,10 +19,19 @@ class BakeryController extends Controller
 
     public function newProduct( Request $request) {
 
-        // $this->call([
+        $seeder = new \Database\Seeders\ProductSeeder;
+
+        $name = $request->name;
+        $price = $request->price;
+        $type_id = $request->type_id;
+
+        $seeder->run($name, $price, $type_id);
+
+        // call([
         //     DatabaseSeeder::class
         // ]);
         
         echo "felvettem";
+        print_r($request->all());
     }
 }

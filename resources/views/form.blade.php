@@ -1,6 +1,6 @@
 <h2>termék hozzáadása</h2>
 
-<form action="new-product" method="post">
+<form action="new-function" method="post">
 
     {{ csrf_field() }}
 

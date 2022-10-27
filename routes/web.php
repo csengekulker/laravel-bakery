@@ -18,3 +18,11 @@ Route::get('/', [ BakeryController::class, 'renderForm']);
 
 
 Route::post('/new-product', [ BakeryController::class, 'newProduct']);
+
+Route::post('/new-function', function () {
+    $controller = new \App\Http\Controllers\BakeryController;
+
+    $controller->newProduct();
+
+    return view('/');
+});

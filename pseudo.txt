@@ -1,3 +1,17 @@
+
+
+
+--mindenekelott--
+
+redirect a form oldalra
+
+
+
+
+
+
+
+
 form: dropdown (benne arraybol betoltott optionok (section) ami typeok 
 mar leteznek a DBben (Kesobb: VAGYKAPU ujletrehozasa, Most: toltsd fel kezzel
 a typeot 5tel)

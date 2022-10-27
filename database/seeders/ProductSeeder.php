@@ -20,10 +20,10 @@ class ProductSeeder extends Seeder
             "type_id" => $type_id 
         ]);
 
-        DB::table('products')->insert([
-            "name" => "Teszt Adat",
-            "price" => 420240,
-            "type_id" => 3
-        ]);
+        // DB::table('products')->insert([
+        //     "name" => "Teszt Adat",
+        //     "price" => 420240,
+        //     "type_id" => 3
+        // ]);
     }
 }

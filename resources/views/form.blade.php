@@ -10,7 +10,7 @@
     </p>
     <p>
         <label for="price">Ár:</label>
-        <input type="text" name="price">
+        <input type="number" name="price">
     </p>
     <p>
         <label for="type">Típus:</label>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TypeSeeder extends Seeder
 {
@@ -11,20 +12,16 @@ class TypeSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-
-    /*
-        CONCEPT
-
-        formban type integer helyett dropdown(tölts bele tömbböl
-         a letezo
-        tipusokat)
-    */
-
+    public function run($type_id)
 
     {
-        DB::table('types')->insert([
+        
+        if ( DB::table('types')->where('type', $type_id)->doesntExist()) {
+            DB::table('types')->insert([
+                "type" => $type_id
+            ]);
+        }
 
-        ]);
+        
     }
 }

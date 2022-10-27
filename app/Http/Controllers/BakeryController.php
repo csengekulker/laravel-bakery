@@ -25,8 +25,10 @@ class BakeryController extends Controller
         $price = $request->price;
         $type_id = $request->type_id;
 
-        $seeder->run($name, $price, $type_id);
+        // $seeder->run($name, $price, $type_id);
 
-        return view('form');
+        $seeder->test($type_id);
+
+        // return view('form');
     }
 }

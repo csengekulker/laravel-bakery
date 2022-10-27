@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
-            $table->foreignId('type_id');
+            $table->integer('type_id');
             $table->timestamps();
         });
     }

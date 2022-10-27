@@ -15,3 +15,9 @@ use App\Http\Controllers\BakeryController;
 */
 
 Route::get('/', [ BakeryController::class, 'renderForm']);
+
+
+Route::post('/new-product', function() {
+    echo "ez mar az api";
+    
+});

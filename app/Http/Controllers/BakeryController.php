@@ -7,6 +7,7 @@ use Database\Seeders\ProductSeeder;
 
 class BakeryController extends Controller
 {
+
     public function renderForm() {
 
         return view('form');
@@ -25,10 +26,8 @@ class BakeryController extends Controller
         $price = $request->price;
         $type_id = $request->type_id;
 
-        // $seeder->run($name, $price, $type_id);
+        $seeder->run($name, $price, $type_id);
 
-        $seeder->test($type_id);
-
-        // return view('form');
+        return view('form');
     }
 }

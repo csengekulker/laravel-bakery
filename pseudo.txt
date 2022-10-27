@@ -3,7 +3,7 @@
 
 --mindenekelott--
 
-redirect a form oldalra
+redirect a form oldalra KESZ
 
 
 

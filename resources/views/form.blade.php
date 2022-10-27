@@ -14,7 +14,7 @@
     </p>
     <p>
         <label for="type">Típus:</label>
-        <input type="text" name="type_id">
+        <input type="text" name="type">
     </p>
     <p>
         <button type="submit">Hozzáad</button>

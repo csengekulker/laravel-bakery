@@ -1,0 +1,18 @@
+
+
+
+--mindenekelott--
+
+redirect a form oldalra KESZ
+
+
+form: dropdown (benne arraybol betoltott optionok (section) ami typeok 
+mar leteznek a DBben (Kesobb: VAGYKAPU ujletrehozasa, Most: toltsd fel kezzel
+a typeot 5tel)
+
+igy elsokorben a type CSAK valaszthato, a DBben string(varchar)
+
+--------------eddig juss el aztan join tables---------
+
+
+

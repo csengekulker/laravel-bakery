@@ -38,49 +38,55 @@ class BakeryController extends Controller
         return view('form');
     }
 
+    private function getTypeId(Request $request) {
+
+        // mar letezo tipus eseten
+
+        $types = DB::table('types');
+
+        $types->updateOrInsert(
+            ['type' => $request->type]
+        );
+
+        $type_id = $types
+        ->where('type', $request->type)
+        ->value('id');
+
+        return $type_id;
+    }
+
     public function insertId(Request $request) {
-        $table = DB::table('types');
+        $types = DB::table('types');
+        $products = DB::table('products');
+
+        $type_id = $this->getTypeId($request);
 
         $name = $request->name;
         $price = $request->price;
         $type = $request->type;
 
         // ha nincs meg ilyen
-        if ($table->where('type', $type)->doesntExist()) {
+        if ($types->where('type', $type)->doesntExist()) {
 
-            $sql = DB::table('types')->insert([
+            $stored = $types->insertGetId([
                 'type' => $type
             ]);
 
-            DB::table('products')->insert([
+            $products->insert([
                 'name' => $name,
                 'price' => $price,
                 'type_id' => $stored
             ]);
 
-            echo $sql;
         } else {
-            // exists 
-            $stored = DB::table('types')->insertGetId([
-                'type' => $type
-            ]);
-    
-            DB::table('products')->insert([
+            $products->insert([
                 'name' => $name,
                 'price' => $price,
-                'type_id' => $stored
+                'type_id' => $type_id
             ]);
-
-            echo "_meglevotipus_";
         }
-
-        // mindenkepp el kell tarolni a masik insertnek
-
-
     
         return redirect('/');
-
-
 
     }
 }

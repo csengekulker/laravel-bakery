@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Http\Request;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,16 +13,25 @@ class TypeSeeder extends Seeder
      *
      * @return void
      */
-    public function run($type_id)
-
+    public function run()
     {
+    
+    }   
 
+    public function getTypeId(Request $request, $type) {
 
-        
-        if ( DB::table('types')->where('type', $type_id)->doesntExist()) {
-            DB::table('types')->insert([
-                "type" => $type_id
-            ]);
-        }   
+        $types = DB::table('types');
+
+        // INSERT
+        $types->updateOrInsert(
+            ['type' => $type]
+        );
+
+        $type_id = $types
+        ->where('type', $request->type)
+        ->value('id');
+
+        return $type_id;
     }
+    
 }

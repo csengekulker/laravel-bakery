@@ -26,67 +26,24 @@ class BakeryController extends Controller
         $productSeeder = new \Database\Seeders\ProductSeeder;
         $typeSeeder = new \Database\Seeders\TypeSeeder;
 
-        $name = $request->name;
-        $price = $request->price;
-        $type_id = $request->type_id;
-
-        // type first
-        $typeSeeder->run($type_id);
-
-        $productSeeder->run($name, $price, $type_id);
-
-        return view('form');
-    }
-
-    private function getTypeId(Request $request) {
-
-        // mar letezo tipus eseten
-
-        $types = DB::table('types');
-
-        $types->updateOrInsert(
-            ['type' => $request->type]
-        );
-
-        $type_id = $types
-        ->where('type', $request->type)
-        ->value('id');
-
-        return $type_id;
-    }
-
-    public function insertId(Request $request) {
-        $types = DB::table('types');
-        $products = DB::table('products');
-
-        $type_id = $this->getTypeId($request);
-
+        // possible fields
         $name = $request->name;
         $price = $request->price;
         $type = $request->type;
 
-        // ha nincs meg ilyen
-        if ($types->where('type', $type)->doesntExist()) {
+        $type_id = $typeSeeder->getTypeId($request, $type);
+        $productSeeder->run($name, $price, $type_id);
 
-            $stored = $types->insertGetId([
-                'type' => $type
-            ]);
 
-            $products->insert([
-                'name' => $name,
-                'price' => $price,
-                'type_id' => $stored
-            ]);
+        // if (DB::table('types')->where('type', $type)->doesntExist()) {
 
-        } else {
-            $products->insert([
-                'name' => $name,
-                'price' => $price,
-                'type_id' => $type_id
-            ]);
-        }
+        //     $typeSeeder->run($name, $price, $type_id, $type);
+
+        // } else {
+        //     $productSeeder->run($name, $price, $type_id);
+
+        // }
     
         return redirect('/');
-
     }
 }

@@ -16,9 +16,11 @@ class BakeryController extends Controller
         return view('form');
     }
 
-    public function renderTable($name, $price, $type_id) {
+    public function renderTable($products) {
 
-        return view('table', compact($name, $price, $type_id));
+        return view('table', [
+            'products' => $products
+        ]);
     }
 
     public function newProduct( Request $request) {
@@ -40,11 +42,18 @@ class BakeryController extends Controller
         //later:model based
 
         $products = DB::table('products')->get();
+        $result = DB::table('products')
+        ->join('types', 'products.type_id', '=', 'types.id')->get();
 
-        foreach( $products as $product ) {
-            echo "<pre>";
-            print_r($product->name." | ".$product->price);
-        }
+        echo "<pre>";
+        print_r($result);
+
+        // foreach( $products as $product ) {
+        //     echo "<pre>";
+        //     print_r($product->name." | ".$product->price." | ".$product->type_id);
+        // }
+
+        // $this->renderTable($products);
 
     }
 }

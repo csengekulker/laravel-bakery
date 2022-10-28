@@ -26,7 +26,6 @@ class BakeryController extends Controller
         $productSeeder = new \Database\Seeders\ProductSeeder;
         $typeSeeder = new \Database\Seeders\TypeSeeder;
 
-        // possible fields
         $name = $request->name;
         $price = $request->price;
         $type = $request->type;
@@ -34,16 +33,6 @@ class BakeryController extends Controller
         $type_id = $typeSeeder->getTypeId($request, $type);
         $productSeeder->run($name, $price, $type_id);
 
-
-        // if (DB::table('types')->where('type', $type)->doesntExist()) {
-
-        //     $typeSeeder->run($name, $price, $type_id, $type);
-
-        // } else {
-        //     $productSeeder->run($name, $price, $type_id);
-
-        // }
-    
         return redirect('/');
     }
 }

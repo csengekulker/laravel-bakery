@@ -22,13 +22,12 @@ class TypeSeeder extends Seeder
 
         $types = DB::table('types');
 
-        // INSERT
         $types->updateOrInsert(
             ['type' => $type]
         );
 
         $type_id = $types
-        ->where('type', $request->type)
+        ->where('type', $type)
         ->value('id');
 
         return $type_id;

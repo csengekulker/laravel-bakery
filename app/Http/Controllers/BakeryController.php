@@ -47,4 +47,13 @@ class BakeryController extends Controller
         return view('table')->with('products', $products);
         
     }
+
+    public function listProductsById() {
+
+        $productSeeder = new \Database\Seeders\ProductSeeder;
+
+        $fields = $productSeeder->selectProductById();
+
+        return view('third')->with('fields', $fields);
+    }
 }

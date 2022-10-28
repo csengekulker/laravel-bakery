@@ -33,4 +33,15 @@ class ProductSeeder extends Seeder
         return $products;
     }
 
+    public function selectProductById() {
+
+        $product = DB::table('products')
+        ->select('products.id', 'name', 'price', 'type')
+        ->where('products.id', 3)
+        ->join('types', 'types.id', '=', 'products.type_id')
+        ->get();
+
+        return $product;
+    }
+
 }

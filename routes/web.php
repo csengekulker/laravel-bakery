@@ -16,6 +16,7 @@ use App\Http\Controllers\BakeryController;
 
 Route::get('/', [ BakeryController::class, 'renderForm']);
 
-
 Route::post('/new-product', [ BakeryController::class, 'newProduct']);
+
+Route::get('/products', [ BakeryController::class, 'listProducts']);
 

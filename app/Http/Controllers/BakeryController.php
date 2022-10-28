@@ -39,21 +39,15 @@ class BakeryController extends Controller
     }
 
     public function listProducts() {
-        //later:model based
 
-        $products = DB::table('products')->get();
-        $result = DB::table('products')
-        ->join('types', 'products.type_id', '=', 'types.id')->get();
+        //TODO: nest in productseeder
 
-        echo "<pre>";
-        print_r($result);
+        $products = DB::table('products')
+            ->select('products.id', 'name', 'price', 'type')
+            ->join('types', 'types.id', '=', 'products.type_id')
+            ->get();
 
-        // foreach( $products as $product ) {
-        //     echo "<pre>";
-        //     print_r($product->name." | ".$product->price." | ".$product->type_id);
-        // }
-
-        // $this->renderTable($products);
-
+        return view('table')->with('products', $products);
+        
     }
 }

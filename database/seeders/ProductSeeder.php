@@ -12,7 +12,7 @@ class ProductSeeder extends Seeder
      *
      * @return void
      */
-    public function run($name, $price, $type_id)
+    public function insertProduct($name, $price, $type_id)
     {
         $products = DB::table('products');
 
@@ -21,6 +21,16 @@ class ProductSeeder extends Seeder
             'price' => $price,
             'type_id' => $type_id
         ]);
+    }
+
+    public function selectProducts () {
+        
+        $products = DB::table('products')
+        ->select('products.id', 'name', 'price', 'type')
+        ->join('types', 'types.id', '=', 'products.type_id')
+        ->get();
+
+        return $products;
     }
 
 }

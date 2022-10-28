@@ -40,12 +40,9 @@ class BakeryController extends Controller
 
     public function listProducts() {
 
-        //TODO: nest in productseeder
+        $productSeeder = new \Database\Seeders\ProductSeeder;
 
-        $products = DB::table('products')
-            ->select('products.id', 'name', 'price', 'type')
-            ->join('types', 'types.id', '=', 'products.type_id')
-            ->get();
+        $products = $productSeeder->selectProducts();
 
         return view('table')->with('products', $products);
         

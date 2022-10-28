@@ -33,7 +33,7 @@ class BakeryController extends Controller
         $type = $request->type;
 
         $type_id = $typeSeeder->getTypeId($request, $type);
-        $productSeeder->run($name, $price, $type_id);
+        $productSeeder->insertProduct($name, $price, $type_id);
 
         return redirect('/');
     }

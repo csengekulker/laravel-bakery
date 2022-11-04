@@ -21,3 +21,7 @@ Route::post('/new-product', [ BakeryController::class, 'newProduct']);
 Route::get('/products', [ BakeryController::class, 'listProducts']);
 
 Route::get('/products/3', [ BakeryController::class, 'listProductsById']);
+
+Route::get('/styletest', function () {
+    return view('styletest');
+});
